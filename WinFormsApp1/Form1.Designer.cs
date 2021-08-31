@@ -45,6 +45,14 @@ namespace WinFormsApp1
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.playersBullet1 = new System.Windows.Forms.PictureBox();
+            this.playersBullet2 = new System.Windows.Forms.PictureBox();
+            this.playersBullet3 = new System.Windows.Forms.PictureBox();
+            this.interfaceBullet1 = new System.Windows.Forms.PictureBox();
+            this.interfaceBullet2 = new System.Windows.Forms.PictureBox();
+            this.interfaceBullet3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.whichBullet_Debug = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.wallBottom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wallTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wallLeft)).BeginInit();
@@ -55,6 +63,13 @@ namespace WinFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playersBullet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playersBullet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playersBullet3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfaceBullet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfaceBullet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfaceBullet3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // wallBottom
@@ -90,7 +105,7 @@ namespace WinFormsApp1
             // WallRight
             // 
             this.WallRight.BackColor = System.Drawing.Color.DimGray;
-            this.WallRight.Location = new System.Drawing.Point(650, 564);
+            this.WallRight.Location = new System.Drawing.Point(645, 558);
             this.WallRight.Name = "WallRight";
             this.WallRight.Size = new System.Drawing.Size(40, 524);
             this.WallRight.TabIndex = 0;
@@ -134,9 +149,9 @@ namespace WinFormsApp1
             this.position_Debug.AutoSize = true;
             this.position_Debug.Location = new System.Drawing.Point(1173, 81);
             this.position_Debug.Name = "position_Debug";
-            this.position_Debug.Size = new System.Drawing.Size(59, 25);
+            this.position_Debug.Size = new System.Drawing.Size(77, 25);
             this.position_Debug.TabIndex = 3;
-            this.position_Debug.Text = "label1";
+            this.position_Debug.Text = "position";
             // 
             // allert_Debug
             // 
@@ -153,7 +168,7 @@ namespace WinFormsApp1
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.DimGray;
-            this.pictureBox1.Location = new System.Drawing.Point(262, 399);
+            this.pictureBox1.Location = new System.Drawing.Point(259, 216);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(234, 192);
             this.pictureBox1.TabIndex = 0;
@@ -173,7 +188,7 @@ namespace WinFormsApp1
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.DimGray;
-            this.pictureBox3.Location = new System.Drawing.Point(349, 573);
+            this.pictureBox3.Location = new System.Drawing.Point(345, 557);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(40, 524);
             this.pictureBox3.TabIndex = 0;
@@ -183,7 +198,7 @@ namespace WinFormsApp1
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.DimGray;
-            this.pictureBox4.Location = new System.Drawing.Point(54, 272);
+            this.pictureBox4.Location = new System.Drawing.Point(68, 292);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(846, 22);
             this.pictureBox4.TabIndex = 0;
@@ -200,12 +215,102 @@ namespace WinFormsApp1
             this.pictureBox5.TabStop = false;
             this.pictureBox5.Tag = "wall";
             // 
+            // playersBullet1
+            // 
+            this.playersBullet1.BackColor = System.Drawing.Color.DarkRed;
+            this.playersBullet1.Location = new System.Drawing.Point(0, 0);
+            this.playersBullet1.Name = "playersBullet1";
+            this.playersBullet1.Size = new System.Drawing.Size(25, 25);
+            this.playersBullet1.TabIndex = 4;
+            this.playersBullet1.TabStop = false;
+            this.playersBullet1.Tag = "playersBullet";
+            this.playersBullet1.Visible = false;
+            this.playersBullet1.Click += new System.EventHandler(this.playersBullet1_Click);
+            // 
+            // playersBullet2
+            // 
+            this.playersBullet2.BackColor = System.Drawing.Color.DarkRed;
+            this.playersBullet2.Location = new System.Drawing.Point(0, 0);
+            this.playersBullet2.Name = "playersBullet2";
+            this.playersBullet2.Size = new System.Drawing.Size(25, 25);
+            this.playersBullet2.TabIndex = 5;
+            this.playersBullet2.TabStop = false;
+            this.playersBullet2.Tag = "playersBullet";
+            this.playersBullet2.Visible = false;
+            // 
+            // playersBullet3
+            // 
+            this.playersBullet3.BackColor = System.Drawing.Color.DarkRed;
+            this.playersBullet3.Location = new System.Drawing.Point(0, 0);
+            this.playersBullet3.Name = "playersBullet3";
+            this.playersBullet3.Size = new System.Drawing.Size(25, 25);
+            this.playersBullet3.TabIndex = 5;
+            this.playersBullet3.TabStop = false;
+            this.playersBullet3.Tag = "playersBullet";
+            this.playersBullet3.Visible = false;
+            // 
+            // interfaceBullet1
+            // 
+            this.interfaceBullet1.BackColor = System.Drawing.Color.DarkRed;
+            this.interfaceBullet1.Location = new System.Drawing.Point(1213, 201);
+            this.interfaceBullet1.Name = "interfaceBullet1";
+            this.interfaceBullet1.Size = new System.Drawing.Size(25, 25);
+            this.interfaceBullet1.TabIndex = 5;
+            this.interfaceBullet1.TabStop = false;
+            this.interfaceBullet1.Tag = "playersBullet";
+            // 
+            // interfaceBullet2
+            // 
+            this.interfaceBullet2.BackColor = System.Drawing.Color.DarkRed;
+            this.interfaceBullet2.Location = new System.Drawing.Point(1213, 251);
+            this.interfaceBullet2.Name = "interfaceBullet2";
+            this.interfaceBullet2.Size = new System.Drawing.Size(25, 25);
+            this.interfaceBullet2.TabIndex = 5;
+            this.interfaceBullet2.TabStop = false;
+            this.interfaceBullet2.Tag = "playersBullet";
+            // 
+            // interfaceBullet3
+            // 
+            this.interfaceBullet3.BackColor = System.Drawing.Color.DarkRed;
+            this.interfaceBullet3.Location = new System.Drawing.Point(1213, 301);
+            this.interfaceBullet3.Name = "interfaceBullet3";
+            this.interfaceBullet3.Size = new System.Drawing.Size(25, 25);
+            this.interfaceBullet3.TabIndex = 5;
+            this.interfaceBullet3.TabStop = false;
+            this.interfaceBullet3.Tag = "playersBullet";
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackColor = System.Drawing.Color.DimGray;
+            this.pictureBox6.Location = new System.Drawing.Point(68, 772);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(145, 25);
+            this.pictureBox6.TabIndex = 0;
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.Tag = "wall";
+            // 
+            // whichBullet_Debug
+            // 
+            this.whichBullet_Debug.AutoSize = true;
+            this.whichBullet_Debug.Location = new System.Drawing.Point(1173, 106);
+            this.whichBullet_Debug.Name = "whichBullet_Debug";
+            this.whichBullet_Debug.Size = new System.Drawing.Size(56, 25);
+            this.whichBullet_Debug.TabIndex = 3;
+            this.whichBullet_Debug.Text = "bullet";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(1314, 1144);
+            this.Controls.Add(this.interfaceBullet3);
+            this.Controls.Add(this.interfaceBullet2);
+            this.Controls.Add(this.interfaceBullet1);
+            this.Controls.Add(this.playersBullet3);
+            this.Controls.Add(this.playersBullet2);
+            this.Controls.Add(this.playersBullet1);
+            this.Controls.Add(this.whichBullet_Debug);
             this.Controls.Add(this.position_Debug);
             this.Controls.Add(this.allert_Debug);
             this.Controls.Add(this.fpsCounter_Debug);
@@ -213,6 +318,7 @@ namespace WinFormsApp1
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.WallRight);
@@ -233,6 +339,13 @@ namespace WinFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playersBullet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playersBullet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playersBullet3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfaceBullet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfaceBullet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfaceBullet3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,6 +368,14 @@ namespace WinFormsApp1
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox playersBullet1;
+        private System.Windows.Forms.PictureBox playersBullet2;
+        private System.Windows.Forms.PictureBox playersBullet3;
+        private System.Windows.Forms.PictureBox interfaceBullet1;
+        private System.Windows.Forms.PictureBox interfaceBullet2;
+        private System.Windows.Forms.PictureBox interfaceBullet3;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Label whichBullet_Debug;
     }
 }
 
