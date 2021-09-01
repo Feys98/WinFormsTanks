@@ -58,6 +58,7 @@ namespace WinFormsApp1
         bool player2Bullet1ShotEnable = true, player2Bullet2ShotEnable = true, player2Bullet3ShotEnable = true;
 
         int player2WhichBullet = 0;
+
         int player2Bullet1Position, player2Bullet2Position, player2Bullet3Position;
         Point player2BulletNewLocation;
         bool player2Reload = false;
@@ -75,9 +76,10 @@ namespace WinFormsApp1
         private void gameFramerate_Tick(object sender, EventArgs e)
         {
             framerateTicks++;
-            positionPlayer1_Debug.Text = playerPosition.ToString();
-            whichBulletPlayer1_Debug.Text = playerWhichBullet.ToString();
 
+
+            interfacePlayerScore.Text = playerScore.ToString();
+            interfacePlayer2Score.Text = player2Score.ToString();
 
             switch (playerPosition)
             {
@@ -201,7 +203,6 @@ namespace WinFormsApp1
                         {
                             player.Top = lastPlayerPositionTop;
                             player.Left = lastPlayerPositionLeft;
-                            allert_Debug.Visible = true;
                         }
 
                         if (playerBullet1.Bounds.IntersectsWith(_wall.Bounds))                        
@@ -229,7 +230,6 @@ namespace WinFormsApp1
                         {
                             player2.Top = lastPlayer2PositionTop;
                             player2.Left = lastPlayer2PositionLeft;
-                            allert_Debug.Visible = true;
                         }
 
                         if (player2Bullet1.Bounds.IntersectsWith(_wall.Bounds))
@@ -263,6 +263,7 @@ namespace WinFormsApp1
                 playerBullet1.Location = new Point(0, 0);
                 player2.Location = new Point(4000,4000);
                 player2IsDead = true;
+                playerScore++;
             }
             if (playerBullet2.Bounds.IntersectsWith(player2.Bounds))
             {
@@ -271,6 +272,7 @@ namespace WinFormsApp1
                 playerBullet2.Location = new Point(0, 0);
                 player2.Location = new Point(4000, 4000);
                 player2IsDead = true;
+                playerScore++;
             }
             if (playerBullet3.Bounds.IntersectsWith(player2.Bounds))
             {
@@ -279,6 +281,7 @@ namespace WinFormsApp1
                 playerBullet3.Location = new Point(0, 0);
                 player2.Location = new Point(4000, 4000);
                 player2IsDead = true;
+                playerScore++;
             }
 
 
@@ -301,6 +304,7 @@ namespace WinFormsApp1
                 player2Bullet1.Location = new Point(0, 0);
                 player.Location = new Point(5000, 5000);
                 playerIsDead = true;
+                player2Score++;
 
             }
             if (player2Bullet2.Bounds.IntersectsWith(player.Bounds))
@@ -310,6 +314,7 @@ namespace WinFormsApp1
                 player2Bullet2.Location = new Point(0, 0);
                 player.Location = new Point(5000, 5000);
                 playerIsDead = true;
+                player2Score++;
             }
             if (player2Bullet3.Bounds.IntersectsWith(player.Bounds))
             {
@@ -318,6 +323,7 @@ namespace WinFormsApp1
                 player2Bullet3.Location = new Point(0, 0);
                 player.Location = new Point(5000, 5000);
                 playerIsDead = true;
+                player2Score++;
             }
 
 
@@ -331,6 +337,18 @@ namespace WinFormsApp1
             //===========================================
 
             //SHOTING P1
+
+
+            if (playerBullet1ShotEnable == false && playerBullet2ShotEnable == false && playerBullet3ShotEnable == false)
+            {
+                interfacePressR.Visible = true;
+            }
+
+            if (player2Bullet1ShotEnable == false && player2Bullet2ShotEnable == false && player2Bullet3ShotEnable == false)
+            {
+                interfacePress0.Visible = true;
+            }
+
 
             if (playerShoot == true && (playerBullet1ShotEnable == true || playerBullet2ShotEnable == true || playerBullet3ShotEnable == true))
             {
@@ -346,6 +364,7 @@ namespace WinFormsApp1
                             playerBullet1Shot = true;
                             playerBullet1.Visible = true;
                             playerBullet1ShotEnable = false;
+                            interfacePlayerBullet1.Visible = false;
                         }
                         else playerWhichBullet++;
                         break;
@@ -357,6 +376,7 @@ namespace WinFormsApp1
                         playerBullet2Shot = true;
                         playerBullet2.Visible = true;
                         playerBullet2ShotEnable = false;
+                            interfacePlayerBullet2.Visible = false;
                         }
                         else playerWhichBullet++;
                         break;
@@ -368,6 +388,7 @@ namespace WinFormsApp1
                         playerBullet3Shot = true;
                         playerBullet3.Visible = true;
                         playerBullet3ShotEnable = false;
+                        interfacePlayerBullet3.Visible = false;
                         }
                         else playerWhichBullet++;
                         break;
@@ -397,6 +418,7 @@ namespace WinFormsApp1
                             player2Bullet1Shot = true;
                             player2Bullet1.Visible = true;
                             player2Bullet1ShotEnable = false;
+                            interfacePlayer2Bullet1.Visible = false;
                         }
                         else player2WhichBullet++;
                         break;
@@ -408,6 +430,7 @@ namespace WinFormsApp1
                             player2Bullet2Shot = true;
                             player2Bullet2.Visible = true;
                             player2Bullet2ShotEnable = false;
+                            interfacePlayer2Bullet2.Visible = false;
                         }
                         else player2WhichBullet++;
                         break;
@@ -419,6 +442,7 @@ namespace WinFormsApp1
                             player2Bullet3Shot = true;
                             player2Bullet3.Visible = true;
                             player2Bullet3ShotEnable = false;
+                            interfacePlayer2Bullet3.Visible = false;
                         }
                         else player2WhichBullet++;
                         break;
@@ -438,13 +462,14 @@ namespace WinFormsApp1
 
             if (playerReload == true && playerBullet1ShotEnable== false && playerBullet2ShotEnable == false && playerBullet3ShotEnable == false)
             {
+                interfacePressR.Visible = false;
+                interfacePlayerReloading.Visible = true;
                 if (playerIsReloadStarted == false)
                 {
                     playerReloadTime = 0;
                     playerIsReloadStarted = true;
                     relodeTimerPlayer1.Enabled = Enabled;
                 }
-                reloadTimeDebug.Text = playerReloadTime.ToString();
 
                 if (playerReloadTime == 3)
                 {
@@ -452,23 +477,27 @@ namespace WinFormsApp1
                     playerBullet2ShotEnable = true;
                     playerBullet3ShotEnable = true;
                     playerReload = false;
-                    reloadTimeDebug.Text = "Reloaded";
                     playerReloadTime = 0;
                     relodeTimerPlayer1.Enabled = false;
                     playerIsReloadStarted = false;
+                    interfacePlayerBullet1.Visible = true;
+                    interfacePlayerBullet2.Visible = true;
+                    interfacePlayerBullet3.Visible = true;
+                    interfacePlayerReloading.Visible = false;
                 }
             }
             //=================
 
             if (player2Reload == true && player2Bullet1ShotEnable == false && player2Bullet2ShotEnable == false && player2Bullet3ShotEnable == false)
             {
+                interfacePress0.Visible = false;
+                interfacePlayer2Reloading.Visible = true;
                 if (player2IsReloadStarted == false)
                 {
                     player2ReloadTime = 0;
                     player2IsReloadStarted = true;
                     relodeTimerPlayer2.Enabled = Enabled;
                 }
-                reloadTimeDebug.Text = player2ReloadTime.ToString();
 
                 if (player2ReloadTime == 3)
                 {
@@ -476,10 +505,13 @@ namespace WinFormsApp1
                     player2Bullet2ShotEnable = true;
                     player2Bullet3ShotEnable = true;
                     player2Reload = false;
-                    reloadTimeDebug.Text = "Reloaded";
                     player2ReloadTime = 0;
                     relodeTimerPlayer2.Enabled = false;
                     player2IsReloadStarted = false;
+                    interfacePlayer2Bullet1.Visible = true;
+                    interfacePlayer2Bullet2.Visible = true;
+                    interfacePlayer2Bullet3.Visible = true;
+                    interfacePlayer2Reloading.Visible = false;
                 }
             }
 
@@ -690,7 +722,6 @@ namespace WinFormsApp1
 
         private void seconds_Tick(object sender, EventArgs e)
         {
-            fpsCounter_Debug.Text = framerateTicks.ToString();
             framerateTicks = 0;
         }
 

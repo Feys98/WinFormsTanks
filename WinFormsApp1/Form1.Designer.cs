@@ -36,10 +36,7 @@ namespace WinFormsApp1
             this.WallRight = new System.Windows.Forms.PictureBox();
             this.player = new System.Windows.Forms.PictureBox();
             this.gameFramerate = new System.Windows.Forms.Timer(this.components);
-            this.fpsCounter_Debug = new System.Windows.Forms.Label();
             this.seconds = new System.Windows.Forms.Timer(this.components);
-            this.positionPlayer1_Debug = new System.Windows.Forms.Label();
-            this.allert_Debug = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -48,18 +45,12 @@ namespace WinFormsApp1
             this.playerBullet1 = new System.Windows.Forms.PictureBox();
             this.playerBullet2 = new System.Windows.Forms.PictureBox();
             this.playerBullet3 = new System.Windows.Forms.PictureBox();
-            this.interfaceBullet1 = new System.Windows.Forms.PictureBox();
-            this.interfaceBullet2 = new System.Windows.Forms.PictureBox();
-            this.interfaceBullet3 = new System.Windows.Forms.PictureBox();
+            this.interfacePlayerBullet1 = new System.Windows.Forms.PictureBox();
+            this.interfacePlayerBullet2 = new System.Windows.Forms.PictureBox();
+            this.interfacePlayerBullet3 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.whichBulletPlayer1_Debug = new System.Windows.Forms.Label();
-            this.tektDebug1 = new System.Windows.Forms.Label();
-            this.reloadTimeDebug = new System.Windows.Forms.Label();
             this.relodeTimerPlayer1 = new System.Windows.Forms.Timer(this.components);
-            this.interfacePlayer1 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.player2 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.player2Bullet1 = new System.Windows.Forms.PictureBox();
             this.player2Bullet3 = new System.Windows.Forms.PictureBox();
             this.player2Bullet2 = new System.Windows.Forms.PictureBox();
@@ -68,6 +59,19 @@ namespace WinFormsApp1
             this.spawner4 = new System.Windows.Forms.PictureBox();
             this.spawner3 = new System.Windows.Forms.PictureBox();
             this.spawner2 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.interfacePlayerScore = new System.Windows.Forms.Label();
+            this.interfacePlayer2Bullet1 = new System.Windows.Forms.PictureBox();
+            this.interfacePlayer2Bullet2 = new System.Windows.Forms.PictureBox();
+            this.interfacePlayer2Bullet3 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.interfacePlayer2Score = new System.Windows.Forms.Label();
+            this.interfacePlayerReloading = new System.Windows.Forms.Label();
+            this.interfacePlayer2Reloading = new System.Windows.Forms.Label();
+            this.interfacePressR = new System.Windows.Forms.Label();
+            this.interfacePress0 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.wallBottom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wallTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wallLeft)).BeginInit();
@@ -81,9 +85,9 @@ namespace WinFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.playerBullet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerBullet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerBullet3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.interfaceBullet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.interfaceBullet2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.interfaceBullet3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfacePlayerBullet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfacePlayerBullet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfacePlayerBullet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player2Bullet1)).BeginInit();
@@ -93,6 +97,9 @@ namespace WinFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.spawner4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spawner3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spawner2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfacePlayer2Bullet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfacePlayer2Bullet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfacePlayer2Bullet3)).BeginInit();
             this.SuspendLayout();
             // 
             // wallBottom
@@ -152,41 +159,11 @@ namespace WinFormsApp1
             this.gameFramerate.Interval = 8;
             this.gameFramerate.Tick += new System.EventHandler(this.gameFramerate_Tick);
             // 
-            // fpsCounter_Debug
-            // 
-            this.fpsCounter_Debug.AutoSize = true;
-            this.fpsCounter_Debug.Location = new System.Drawing.Point(1173, 56);
-            this.fpsCounter_Debug.Name = "fpsCounter_Debug";
-            this.fpsCounter_Debug.Size = new System.Drawing.Size(37, 25);
-            this.fpsCounter_Debug.TabIndex = 2;
-            this.fpsCounter_Debug.Text = "fps";
-            // 
             // seconds
             // 
             this.seconds.Enabled = true;
             this.seconds.Interval = 1000;
             this.seconds.Tick += new System.EventHandler(this.seconds_Tick);
-            // 
-            // positionPlayer1_Debug
-            // 
-            this.positionPlayer1_Debug.AutoSize = true;
-            this.positionPlayer1_Debug.Location = new System.Drawing.Point(1235, 289);
-            this.positionPlayer1_Debug.Name = "positionPlayer1_Debug";
-            this.positionPlayer1_Debug.Size = new System.Drawing.Size(77, 25);
-            this.positionPlayer1_Debug.TabIndex = 3;
-            this.positionPlayer1_Debug.Text = "position";
-            // 
-            // allert_Debug
-            // 
-            this.allert_Debug.AutoSize = true;
-            this.allert_Debug.BackColor = System.Drawing.Color.DarkRed;
-            this.allert_Debug.ForeColor = System.Drawing.Color.Red;
-            this.allert_Debug.Location = new System.Drawing.Point(1173, 31);
-            this.allert_Debug.Name = "allert_Debug";
-            this.allert_Debug.Size = new System.Drawing.Size(83, 25);
-            this.allert_Debug.TabIndex = 2;
-            this.allert_Debug.Text = "ALLERT!!!";
-            this.allert_Debug.Visible = false;
             // 
             // pictureBox1
             // 
@@ -271,35 +248,35 @@ namespace WinFormsApp1
             this.playerBullet3.Tag = "players1Bullet";
             this.playerBullet3.Visible = false;
             // 
-            // interfaceBullet1
+            // interfacePlayerBullet1
             // 
-            this.interfaceBullet1.BackColor = System.Drawing.Color.DarkRed;
-            this.interfaceBullet1.Location = new System.Drawing.Point(1215, 372);
-            this.interfaceBullet1.Name = "interfaceBullet1";
-            this.interfaceBullet1.Size = new System.Drawing.Size(25, 25);
-            this.interfaceBullet1.TabIndex = 5;
-            this.interfaceBullet1.TabStop = false;
-            this.interfaceBullet1.Tag = "playersBullet";
+            this.interfacePlayerBullet1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.interfacePlayerBullet1.Location = new System.Drawing.Point(1213, 283);
+            this.interfacePlayerBullet1.Name = "interfacePlayerBullet1";
+            this.interfacePlayerBullet1.Size = new System.Drawing.Size(25, 25);
+            this.interfacePlayerBullet1.TabIndex = 5;
+            this.interfacePlayerBullet1.TabStop = false;
+            this.interfacePlayerBullet1.Tag = "playersBullet";
             // 
-            // interfaceBullet2
+            // interfacePlayerBullet2
             // 
-            this.interfaceBullet2.BackColor = System.Drawing.Color.DarkRed;
-            this.interfaceBullet2.Location = new System.Drawing.Point(1215, 422);
-            this.interfaceBullet2.Name = "interfaceBullet2";
-            this.interfaceBullet2.Size = new System.Drawing.Size(25, 25);
-            this.interfaceBullet2.TabIndex = 5;
-            this.interfaceBullet2.TabStop = false;
-            this.interfaceBullet2.Tag = "playersBullet";
+            this.interfacePlayerBullet2.BackColor = System.Drawing.Color.DodgerBlue;
+            this.interfacePlayerBullet2.Location = new System.Drawing.Point(1213, 333);
+            this.interfacePlayerBullet2.Name = "interfacePlayerBullet2";
+            this.interfacePlayerBullet2.Size = new System.Drawing.Size(25, 25);
+            this.interfacePlayerBullet2.TabIndex = 5;
+            this.interfacePlayerBullet2.TabStop = false;
+            this.interfacePlayerBullet2.Tag = "playersBullet";
             // 
-            // interfaceBullet3
+            // interfacePlayerBullet3
             // 
-            this.interfaceBullet3.BackColor = System.Drawing.Color.DarkRed;
-            this.interfaceBullet3.Location = new System.Drawing.Point(1215, 472);
-            this.interfaceBullet3.Name = "interfaceBullet3";
-            this.interfaceBullet3.Size = new System.Drawing.Size(25, 25);
-            this.interfaceBullet3.TabIndex = 5;
-            this.interfaceBullet3.TabStop = false;
-            this.interfaceBullet3.Tag = "playersBullet";
+            this.interfacePlayerBullet3.BackColor = System.Drawing.Color.DodgerBlue;
+            this.interfacePlayerBullet3.Location = new System.Drawing.Point(1213, 383);
+            this.interfacePlayerBullet3.Name = "interfacePlayerBullet3";
+            this.interfacePlayerBullet3.Size = new System.Drawing.Size(25, 25);
+            this.interfacePlayerBullet3.TabIndex = 5;
+            this.interfacePlayerBullet3.TabStop = false;
+            this.interfacePlayerBullet3.Tag = "playersBullet";
             // 
             // pictureBox6
             // 
@@ -311,55 +288,10 @@ namespace WinFormsApp1
             this.pictureBox6.TabStop = false;
             this.pictureBox6.Tag = "wall";
             // 
-            // whichBulletPlayer1_Debug
-            // 
-            this.whichBulletPlayer1_Debug.AutoSize = true;
-            this.whichBulletPlayer1_Debug.Location = new System.Drawing.Point(1237, 216);
-            this.whichBulletPlayer1_Debug.Name = "whichBulletPlayer1_Debug";
-            this.whichBulletPlayer1_Debug.Size = new System.Drawing.Size(56, 25);
-            this.whichBulletPlayer1_Debug.TabIndex = 3;
-            this.whichBulletPlayer1_Debug.Text = "bullet";
-            // 
-            // tektDebug1
-            // 
-            this.tektDebug1.AutoSize = true;
-            this.tektDebug1.Location = new System.Drawing.Point(1140, 317);
-            this.tektDebug1.Name = "tektDebug1";
-            this.tektDebug1.Size = new System.Drawing.Size(100, 25);
-            this.tektDebug1.TabIndex = 3;
-            this.tektDebug1.Text = "reloadTime";
-            // 
-            // reloadTimeDebug
-            // 
-            this.reloadTimeDebug.AutoSize = true;
-            this.reloadTimeDebug.Location = new System.Drawing.Point(1237, 317);
-            this.reloadTimeDebug.Name = "reloadTimeDebug";
-            this.reloadTimeDebug.Size = new System.Drawing.Size(56, 25);
-            this.reloadTimeDebug.TabIndex = 3;
-            this.reloadTimeDebug.Text = "bullet";
-            // 
             // relodeTimerPlayer1
             // 
             this.relodeTimerPlayer1.Interval = 1000;
             this.relodeTimerPlayer1.Tick += new System.EventHandler(this.relodeTimerPlayer1_Tick);
-            // 
-            // interfacePlayer1
-            // 
-            this.interfacePlayer1.AutoSize = true;
-            this.interfacePlayer1.Location = new System.Drawing.Point(1154, 254);
-            this.interfacePlayer1.Name = "interfacePlayer1";
-            this.interfacePlayer1.Size = new System.Drawing.Size(137, 25);
-            this.interfacePlayer1.TabIndex = 3;
-            this.interfacePlayer1.Text = "InterfacePlayer1";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1154, 289);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 25);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "position";
             // 
             // player2
             // 
@@ -371,15 +303,6 @@ namespace WinFormsApp1
             this.player2.TabIndex = 1;
             this.player2.TabStop = false;
             this.player2.Tag = "player2";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1173, 216);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 25);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "bullet";
             // 
             // player2Bullet1
             // 
@@ -459,34 +382,172 @@ namespace WinFormsApp1
             this.spawner2.Tag = "spawner";
             this.spawner2.Visible = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(1166, 194);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 30);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "PLAYER 1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Stencil", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(1178, 238);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 21);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "SCORE:";
+            // 
+            // interfacePlayerScore
+            // 
+            this.interfacePlayerScore.AutoSize = true;
+            this.interfacePlayerScore.Font = new System.Drawing.Font("Stencil", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.interfacePlayerScore.Location = new System.Drawing.Point(1249, 238);
+            this.interfacePlayerScore.Name = "interfacePlayerScore";
+            this.interfacePlayerScore.Size = new System.Drawing.Size(20, 21);
+            this.interfacePlayerScore.TabIndex = 8;
+            this.interfacePlayerScore.Text = "0";
+            // 
+            // interfacePlayer2Bullet1
+            // 
+            this.interfacePlayer2Bullet1.BackColor = System.Drawing.Color.DarkRed;
+            this.interfacePlayer2Bullet1.Location = new System.Drawing.Point(1213, 674);
+            this.interfacePlayer2Bullet1.Name = "interfacePlayer2Bullet1";
+            this.interfacePlayer2Bullet1.Size = new System.Drawing.Size(25, 25);
+            this.interfacePlayer2Bullet1.TabIndex = 5;
+            this.interfacePlayer2Bullet1.TabStop = false;
+            this.interfacePlayer2Bullet1.Tag = "playersBullet";
+            // 
+            // interfacePlayer2Bullet2
+            // 
+            this.interfacePlayer2Bullet2.BackColor = System.Drawing.Color.DarkRed;
+            this.interfacePlayer2Bullet2.Location = new System.Drawing.Point(1213, 724);
+            this.interfacePlayer2Bullet2.Name = "interfacePlayer2Bullet2";
+            this.interfacePlayer2Bullet2.Size = new System.Drawing.Size(25, 25);
+            this.interfacePlayer2Bullet2.TabIndex = 5;
+            this.interfacePlayer2Bullet2.TabStop = false;
+            this.interfacePlayer2Bullet2.Tag = "playersBullet";
+            // 
+            // interfacePlayer2Bullet3
+            // 
+            this.interfacePlayer2Bullet3.BackColor = System.Drawing.Color.DarkRed;
+            this.interfacePlayer2Bullet3.Location = new System.Drawing.Point(1213, 774);
+            this.interfacePlayer2Bullet3.Name = "interfacePlayer2Bullet3";
+            this.interfacePlayer2Bullet3.Size = new System.Drawing.Size(25, 25);
+            this.interfacePlayer2Bullet3.TabIndex = 5;
+            this.interfacePlayer2Bullet3.TabStop = false;
+            this.interfacePlayer2Bullet3.Tag = "playersBullet";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(1166, 585);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(119, 30);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "PLAYER 2";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Stencil", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(1181, 629);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 21);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "SCORE:";
+            // 
+            // interfacePlayer2Score
+            // 
+            this.interfacePlayer2Score.AutoSize = true;
+            this.interfacePlayer2Score.Font = new System.Drawing.Font("Stencil", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.interfacePlayer2Score.Location = new System.Drawing.Point(1252, 629);
+            this.interfacePlayer2Score.Name = "interfacePlayer2Score";
+            this.interfacePlayer2Score.Size = new System.Drawing.Size(20, 21);
+            this.interfacePlayer2Score.TabIndex = 8;
+            this.interfacePlayer2Score.Text = "0";
+            // 
+            // interfacePlayerReloading
+            // 
+            this.interfacePlayerReloading.AutoSize = true;
+            this.interfacePlayerReloading.Font = new System.Drawing.Font("Franklin Gothic Demi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.interfacePlayerReloading.Location = new System.Drawing.Point(1158, 333);
+            this.interfacePlayerReloading.Name = "interfacePlayerReloading";
+            this.interfacePlayerReloading.Size = new System.Drawing.Size(137, 30);
+            this.interfacePlayerReloading.TabIndex = 7;
+            this.interfacePlayerReloading.Text = "Reloading...";
+            this.interfacePlayerReloading.Visible = false;
+            // 
+            // interfacePlayer2Reloading
+            // 
+            this.interfacePlayer2Reloading.AutoSize = true;
+            this.interfacePlayer2Reloading.Font = new System.Drawing.Font("Franklin Gothic Demi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.interfacePlayer2Reloading.Location = new System.Drawing.Point(1158, 724);
+            this.interfacePlayer2Reloading.Name = "interfacePlayer2Reloading";
+            this.interfacePlayer2Reloading.Size = new System.Drawing.Size(137, 30);
+            this.interfacePlayer2Reloading.TabIndex = 7;
+            this.interfacePlayer2Reloading.Text = "Reloading...";
+            this.interfacePlayer2Reloading.Visible = false;
+            // 
+            // interfacePressR
+            // 
+            this.interfacePressR.AutoSize = true;
+            this.interfacePressR.Font = new System.Drawing.Font("Franklin Gothic Demi", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.interfacePressR.Location = new System.Drawing.Point(1141, 338);
+            this.interfacePressR.Name = "interfacePressR";
+            this.interfacePressR.Size = new System.Drawing.Size(162, 25);
+            this.interfacePressR.TabIndex = 7;
+            this.interfacePressR.Text = "Press R to reload";
+            this.interfacePressR.Visible = false;
+            // 
+            // interfacePress0
+            // 
+            this.interfacePress0.AutoSize = true;
+            this.interfacePress0.Font = new System.Drawing.Font("Franklin Gothic Demi", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.interfacePress0.Location = new System.Drawing.Point(1142, 728);
+            this.interfacePress0.Name = "interfacePress0";
+            this.interfacePress0.Size = new System.Drawing.Size(161, 25);
+            this.interfacePress0.TabIndex = 7;
+            this.interfacePress0.Text = "Press 1 to reload";
+            this.interfacePress0.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(1314, 1144);
+            this.Controls.Add(this.interfacePlayer2Score);
+            this.Controls.Add(this.interfacePlayerScore);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.interfacePlayer2Reloading);
+            this.Controls.Add(this.interfacePress0);
+            this.Controls.Add(this.interfacePressR);
+            this.Controls.Add(this.interfacePlayerReloading);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.spawner2);
             this.Controls.Add(this.spawner3);
             this.Controls.Add(this.spawner4);
             this.Controls.Add(this.spawner1);
-            this.Controls.Add(this.interfaceBullet3);
-            this.Controls.Add(this.interfaceBullet2);
-            this.Controls.Add(this.interfaceBullet1);
+            this.Controls.Add(this.interfacePlayer2Bullet3);
+            this.Controls.Add(this.interfacePlayer2Bullet2);
+            this.Controls.Add(this.interfacePlayerBullet3);
+            this.Controls.Add(this.interfacePlayer2Bullet1);
+            this.Controls.Add(this.interfacePlayerBullet2);
+            this.Controls.Add(this.interfacePlayerBullet1);
             this.Controls.Add(this.player2Bullet2);
             this.Controls.Add(this.playerBullet3);
             this.Controls.Add(this.player2Bullet3);
             this.Controls.Add(this.player2Bullet1);
             this.Controls.Add(this.playerBullet2);
             this.Controls.Add(this.playerBullet1);
-            this.Controls.Add(this.reloadTimeDebug);
-            this.Controls.Add(this.tektDebug1);
-            this.Controls.Add(this.interfacePlayer1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.whichBulletPlayer1_Debug);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.positionPlayer1_Debug);
-            this.Controls.Add(this.allert_Debug);
-            this.Controls.Add(this.fpsCounter_Debug);
             this.Controls.Add(this.player2);
             this.Controls.Add(this.player);
             this.Controls.Add(this.pictureBox1);
@@ -515,9 +576,9 @@ namespace WinFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.playerBullet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerBullet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerBullet3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.interfaceBullet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.interfaceBullet2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.interfaceBullet3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfacePlayerBullet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfacePlayerBullet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfacePlayerBullet3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.player2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.player2Bullet1)).EndInit();
@@ -527,6 +588,9 @@ namespace WinFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.spawner4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spawner3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spawner2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfacePlayer2Bullet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfacePlayer2Bullet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfacePlayer2Bullet3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -540,10 +604,7 @@ namespace WinFormsApp1
         private System.Windows.Forms.PictureBox WallRight;
         private System.Windows.Forms.PictureBox player;
         private System.Windows.Forms.Timer gameFramerate;
-        private System.Windows.Forms.Label fpsCounter_Debug;
         private System.Windows.Forms.Timer seconds;
-        private System.Windows.Forms.Label positionPlayer1_Debug;
-        private System.Windows.Forms.Label allert_Debug;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
@@ -552,18 +613,12 @@ namespace WinFormsApp1
         private System.Windows.Forms.PictureBox playerBullet1;
         private System.Windows.Forms.PictureBox playerBullet2;
         private System.Windows.Forms.PictureBox playerBullet3;
-        private System.Windows.Forms.PictureBox interfaceBullet1;
-        private System.Windows.Forms.PictureBox interfaceBullet2;
-        private System.Windows.Forms.PictureBox interfaceBullet3;
+        private System.Windows.Forms.PictureBox interfacePlayerBullet1;
+        private System.Windows.Forms.PictureBox interfacePlayerBullet2;
+        private System.Windows.Forms.PictureBox interfacePlayerBullet3;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.Label whichBulletPlayer1_Debug;
-        private System.Windows.Forms.Label tektDebug1;
-        private System.Windows.Forms.Label reloadTimeDebug;
         private System.Windows.Forms.Timer relodeTimerPlayer1;
-        private System.Windows.Forms.Label interfacePlayer1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox player2;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox player2Bullet1;
         private System.Windows.Forms.PictureBox player2Bullet3;
         private System.Windows.Forms.PictureBox player2Bullet2;
@@ -572,6 +627,19 @@ namespace WinFormsApp1
         private System.Windows.Forms.PictureBox spawner4;
         private System.Windows.Forms.PictureBox spawner3;
         private System.Windows.Forms.PictureBox spawner2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label interfacePlayerScore;
+        private System.Windows.Forms.PictureBox interfacePlayer2Bullet1;
+        private System.Windows.Forms.PictureBox interfacePlayer2Bullet2;
+        private System.Windows.Forms.PictureBox interfacePlayer2Bullet3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label interfacePlayer2Score;
+        private System.Windows.Forms.Label interfacePlayerReloading;
+        private System.Windows.Forms.Label interfacePlayer2Reloading;
+        private System.Windows.Forms.Label interfacePressR;
+        private System.Windows.Forms.Label interfacePress0;
     }
 }
 
