@@ -13,39 +13,54 @@ namespace WinFormsApp1
 {
     public partial class Form1 : Form
     {
-
-        //debbug
-
-
-
-        //-----
-
-        bool goForward = false, goBack = false;
-
-        int playersPosition = 0;
-
-        int playerSpeed = 3;
-
-        int score = 0;
+        //debug
 
         int framerateTicks = 0;
 
+        //====
+
+        //player 1 variables
+        bool playerGoForward = false, playerGoBack = false;
+        int playerPosition = 0;
+        int playerSpeed = 3;
+        int playerScore = 0;
+
+
 
         //==BULLETS
-        bool playersShoot = false;
-        bool playersBullet1Shot = false, playersBullet2Shot = false, playersBullet3Shot = false;
-        bool playersBullet1ShotEnable = true, playersBullet2ShotEnable = true, playersBullet3ShotEnable = true;
+        bool playerShoot = false;
+        bool playerBullet1Shot = false, playerBullet2Shot = false, playerBullet3Shot = false;
+        bool playerBullet1ShotEnable = true, playerBullet2ShotEnable = true, playerBullet3ShotEnable = true;
         int playerWhichBullet = 0;
-        int playersBullet1Position, playersBullet2Position, playersBullet3Position;
-        Point playersBulletNewLocation;
-        bool playersReload = false;
-
-       
-
-        int playersReloadTime = 0;
-
-
+        int playerBullet1Position, playerBullet2Position, playerBullet3Position;
+        Point playerBulletNewLocation;
+        bool playerReload = false;
+  
+        int playerReloadTime = 0;
         bool playerIsReloadStarted = false;
+
+        //===========
+
+        //player 2 variables
+
+        bool player2GoForward = false, player2GoBack = false;
+        int player2Position = 0;
+        int player2Speed = 3;
+        int player2Score = 0;
+
+        //==BULLETS
+        bool player2Shoot = false;
+        bool player2Bullet1Shot = false, player2Bullet2Shot = false, player2Bullet3Shot = false;
+        bool player2Bullet1ShotEnable = true, player2Bullet2ShotEnable = true, player2Bullet3ShotEnable = true;
+
+        int player2WhichBullet = 0;
+        int player2Bullet1Position, player2Bullet2Position, player2Bullet3Position;
+        Point player2BulletNewLocation;
+        bool player2Reload = false;
+
+        int player2ReloadTime = 0;
+        bool player2IsReloadStarted = false;
+        //===========
 
         public Form1()
         {
@@ -56,11 +71,11 @@ namespace WinFormsApp1
         private void gameFramerate_Tick(object sender, EventArgs e)
         {
             framerateTicks++;
-            position_Debug.Text = playersPosition.ToString();
-            whichBullet_Debug.Text = playerWhichBullet.ToString();
+            positionPlayer1_Debug.Text = playerPosition.ToString();
+            whichBulletPlayer1_Debug.Text = playerWhichBullet.ToString();
 
 
-            switch (playersPosition)
+            switch (playerPosition)
             {
                 case 0:
                     player.BackgroundImage = WinFormsApp1.Properties.Resources.TankModel_pos0;
@@ -75,37 +90,98 @@ namespace WinFormsApp1
                     player.BackgroundImage = WinFormsApp1.Properties.Resources.TankModel_pos3;
                     break;
             }
+            switch (player2Position)
+            {
+                case 0:
+                    player2.BackgroundImage = WinFormsApp1.Properties.Resources.TankModel2_pos0;
+                    break;
+                case 1:
+                    player2.BackgroundImage = WinFormsApp1.Properties.Resources.TankModel2_pos1;
+                    break;
+                case 2:
+                    player2.BackgroundImage = WinFormsApp1.Properties.Resources.TankModel2_pos2;
+                    break;
+                case 3:
+                    player2.BackgroundImage = WinFormsApp1.Properties.Resources.TankModel2_pos3;
+                    break;
+            }
+
+//SAVING POSITION FOR COLISION WITCH WALLS BEFORE MOVEMENT
 
             int lastPlayerPositionTop = player.Top;
             int lastPlayerPositionLeft = player.Left;
-            
-            switch (playersPosition)
+
+            int lastPlayer2PositionTop = player2.Top;
+            int lastPlayer2PositionLeft = player2.Left;
+
+
+            //PLAYER1 movement
+            switch (playerPosition)
             {
                 case 0:
-                    if (goForward == true)
+                    if (playerGoForward == true)
                         player.Top -= playerSpeed;
-                    if (goBack == true)
+                    if (playerGoBack == true)
                         player.Top += playerSpeed;
                     break;
                 case 1:
-                    if (goForward == true)
+                    if (playerGoForward == true)
                         player.Left += playerSpeed;
-                    if (goBack == true)
+                    if (playerGoBack == true)
                         player.Left -= playerSpeed;
                     break;
                 case 2:
-                    if (goForward == true)
+                    if (playerGoForward == true)
                         player.Top += playerSpeed;
-                    if (goBack == true)
+                    if (playerGoBack == true)
                         player.Top -= playerSpeed;
                     break;
                 case 3:
-                    if (goForward == true)
+                    if (playerGoForward == true)
                         player.Left -= playerSpeed;
-                    if (goBack == true)
+                    if (playerGoBack == true)
                         player.Left += playerSpeed;
                     break;
             }
+
+
+//player2 movement
+
+
+            switch (player2Position)
+            {
+                case 0:
+                    if (player2GoForward == true)
+                        player2.Top -= player2Speed;
+                    if (player2GoBack == true)
+                        player2.Top += player2Speed;
+                    break;
+                case 1:
+                    if (player2GoForward == true)
+                        player2.Left += player2Speed;
+                    if (player2GoBack == true)
+                        player2.Left -= player2Speed;
+                    break;
+                case 2:
+                    if (player2GoForward == true)
+                        player2.Top += player2Speed;
+                    if (player2GoBack == true)
+                        player2.Top -= player2Speed;
+                    break;
+                case 3:
+                    if (player2GoForward == true)
+                        player2.Left -= player2Speed;
+                    if (player2GoBack == true)
+                        player2.Left += player2Speed;
+                    break;
+            }
+
+
+
+//COLISIONS=================================
+
+
+
 
             foreach (Control _wall in this.Controls)
             {
@@ -113,6 +189,10 @@ namespace WinFormsApp1
                 {
                     if ((string)_wall.Tag == "wall")
                     {
+
+
+//player1 bullet colision with wall
+
                         if (player.Bounds.IntersectsWith(_wall.Bounds))
                         {
                             player.Top = lastPlayerPositionTop;
@@ -120,64 +200,97 @@ namespace WinFormsApp1
                             allert_Debug.Visible = true;
                         }
 
-                        if (playersBullet1.Bounds.IntersectsWith(_wall.Bounds))                        
+                        if (playerBullet1.Bounds.IntersectsWith(_wall.Bounds))                        
                         {
-                            playersBullet1.Visible = false;
-                            playersBullet1Shot = false;
-                            playersBullet1.Location = new Point (0,0);
+                            playerBullet1.Visible = false;
+                            playerBullet1Shot = false;
+                            playerBullet1.Location = new Point (0,0);
                         }
-                        if (playersBullet2.Bounds.IntersectsWith(_wall.Bounds))
+                        if (playerBullet2.Bounds.IntersectsWith(_wall.Bounds))
                         {
-                            playersBullet2.Visible = false;
-                            playersBullet2Shot = false;
-                            playersBullet2.Location = new Point(0, 0);
+                            playerBullet2.Visible = false;
+                            playerBullet2Shot = false;
+                            playerBullet2.Location = new Point(0, 0);
                         }
-                        if (playersBullet3.Bounds.IntersectsWith(_wall.Bounds))
+                        if (playerBullet3.Bounds.IntersectsWith(_wall.Bounds))
                         {
-                            playersBullet3.Visible = false;
-                            playersBullet3Shot = false;
-                            playersBullet3.Location = new Point(0, 0);
+                            playerBullet3.Visible = false;
+                            playerBullet3Shot = false;
+                            playerBullet3.Location = new Point(0, 0);
+                        }
+
+
+//player2 bullet colision with wall
+
+                        if (player2.Bounds.IntersectsWith(_wall.Bounds))
+                        {
+                            player2.Top = lastPlayer2PositionTop;
+                            player2.Left = lastPlayer2PositionLeft;
+                            allert_Debug.Visible = true;
+                        }
+
+                        if (player2Bullet1.Bounds.IntersectsWith(_wall.Bounds))
+                        {
+                            player2Bullet1.Visible = false;
+                            player2Bullet1Shot = false;
+                            player2Bullet1.Location = new Point(0, 0);
+                        }
+                        if (player2Bullet2.Bounds.IntersectsWith(_wall.Bounds))
+                        {
+                            player2Bullet2.Visible = false;
+                            player2Bullet2Shot = false;
+                            player2Bullet2.Location = new Point(0, 0);
+                        }
+                        if (player2Bullet3.Bounds.IntersectsWith(_wall.Bounds))
+                        {
+                            player2Bullet3.Visible = false;
+                            player2Bullet3Shot = false;
+                            player2Bullet3.Location = new Point(0, 0);
                         }
                     }
                 }
             }
-            //SHOTING P1
-            if (playersShoot == true)
+
+//===========================================
+
+//SHOTING P1
+
+            if (playerShoot == true && (playerBullet1ShotEnable == true || playerBullet2ShotEnable == true || playerBullet3ShotEnable == true))
             {
-                playersBulletNewLocation = new Point(player.Location.X + player.Size.Width/2 - playersBullet1.Size.Height/2, player.Location.Y + player.Size.Height/2 - playersBullet1.Size.Width / 2);
+                playerBulletNewLocation = new Point(player.Location.X + player.Size.Width/2 - playerBullet1.Size.Height/2, player.Location.Y + player.Size.Height/2 - playerBullet1.Size.Width / 2);
 
                 switch (playerWhichBullet)
                 {
                     case 0:
-                        if (playersBullet1ShotEnable == true)
+                        if (playerBullet1ShotEnable == true)
                         {
-                            playersBullet1Position = playersPosition;
-                            playersBullet1.Location = playersBulletNewLocation;
-                            playersBullet1Shot = true;
-                            playersBullet1.Visible = true;
-                            playersBullet1ShotEnable = false;
+                            playerBullet1Position = playerPosition;
+                            playerBullet1.Location = playerBulletNewLocation;
+                            playerBullet1Shot = true;
+                            playerBullet1.Visible = true;
+                            playerBullet1ShotEnable = false;
                         }
                         else playerWhichBullet++;
                         break;
                     case 1:
-                        if (playersBullet2ShotEnable == true)
+                        if (playerBullet2ShotEnable == true)
                         {
-                        playersBullet2Position = playersPosition;
-                        playersBullet2.Location = playersBulletNewLocation;
-                        playersBullet2Shot = true;
-                        playersBullet2.Visible = true;
-                        playersBullet2ShotEnable = false;
+                        playerBullet2Position = playerPosition;
+                        playerBullet2.Location = playerBulletNewLocation;
+                        playerBullet2Shot = true;
+                        playerBullet2.Visible = true;
+                        playerBullet2ShotEnable = false;
                         }
                         else playerWhichBullet++;
                         break;
                     case 2:
-                        if (playersBullet3ShotEnable == true)
+                        if (playerBullet3ShotEnable == true)
                         {
-                        playersBullet3Position = playersPosition;
-                        playersBullet3.Location = playersBulletNewLocation;
-                        playersBullet3Shot = true;
-                        playersBullet3.Visible = true;
-                        playersBullet3ShotEnable = false;
+                        playerBullet3Position = playerPosition;
+                        playerBullet3.Location = playerBulletNewLocation;
+                        playerBullet3Shot = true;
+                        playerBullet3.Visible = true;
+                        playerBullet3ShotEnable = false;
                         }
                         else playerWhichBullet++;
                         break;
@@ -186,90 +299,239 @@ namespace WinFormsApp1
                 }
                 playerWhichBullet++;
                 if (playerWhichBullet > 2) playerWhichBullet = 0;
-                playersShoot = false;
+                playerShoot = false;
 
             }
+
+
+            //=================
+
+            if (player2Shoot == true && (player2Bullet1ShotEnable == true || player2Bullet2ShotEnable == true || player2Bullet3ShotEnable == true))
+            {
+                player2BulletNewLocation = new Point(player2.Location.X + player2.Size.Width / 2 - player2Bullet1.Size.Height / 2, player2.Location.Y + player2.Size.Height / 2 - player2Bullet1.Size.Width / 2);
+
+                switch (player2WhichBullet)
+                {
+                    case 0:
+                        if (player2Bullet1ShotEnable == true)
+                        {
+                            player2Bullet1Position = player2Position;
+                            player2Bullet1.Location = player2BulletNewLocation;
+                            player2Bullet1Shot = true;
+                            player2Bullet1.Visible = true;
+                            player2Bullet1ShotEnable = false;
+                        }
+                        else player2WhichBullet++;
+                        break;
+                    case 1:
+                        if (player2Bullet2ShotEnable == true)
+                        {
+                            player2Bullet2Position = player2Position;
+                            player2Bullet2.Location = player2BulletNewLocation;
+                            player2Bullet2Shot = true;
+                            player2Bullet2.Visible = true;
+                            player2Bullet2ShotEnable = false;
+                        }
+                        else player2WhichBullet++;
+                        break;
+                    case 2:
+                        if (player2Bullet3ShotEnable == true)
+                        {
+                            player2Bullet3Position = player2Position;
+                            player2Bullet3.Location = player2BulletNewLocation;
+                            player2Bullet3Shot = true;
+                            player2Bullet3.Visible = true;
+                            player2Bullet3ShotEnable = false;
+                        }
+                        else player2WhichBullet++;
+                        break;
+                    default:
+                        break;
+                }
+                player2WhichBullet++;
+                if (player2WhichBullet > 2) player2WhichBullet = 0;
+                player2Shoot = false;
+
+            }
+
+
+            //=================
+
             //RELOAD P1
-            if (playersReload == true && playersBullet1ShotEnable== false && playersBullet2ShotEnable == false && playersBullet3ShotEnable == false)
+
+            if (playerReload == true && playerBullet1ShotEnable== false && playerBullet2ShotEnable == false && playerBullet3ShotEnable == false)
             {
                 if (playerIsReloadStarted == false)
                 {
-                    playersReloadTime = 0;
+                    playerReloadTime = 0;
                     playerIsReloadStarted = true;
                     relodeTimerPlayer1.Enabled = Enabled;
                 }
-                reloadTimeDebug.Text = playersReloadTime.ToString();
+                reloadTimeDebug.Text = playerReloadTime.ToString();
 
-                if (playersReloadTime == 3)
+                if (playerReloadTime == 3)
                 {
-                    playersBullet1ShotEnable = true;
-                    playersBullet2ShotEnable = true;
-                    playersBullet3ShotEnable = true;
-                    playersReload = false;
+                    playerBullet1ShotEnable = true;
+                    playerBullet2ShotEnable = true;
+                    playerBullet3ShotEnable = true;
+                    playerReload = false;
                     reloadTimeDebug.Text = "Reloaded";
-                    playersReloadTime = 0;
+                    playerReloadTime = 0;
                     relodeTimerPlayer1.Enabled = false;
                     playerIsReloadStarted = false;
                 }
             }
-            //----------------------
-            if (playersBullet1Shot == true)
+            //=================
+
+            if (player2Reload == true && player2Bullet1ShotEnable == false && player2Bullet2ShotEnable == false && player2Bullet3ShotEnable == false)
             {
-                switch (playersBullet1Position)
+                if (player2IsReloadStarted == false)
+                {
+                    player2ReloadTime = 0;
+                    player2IsReloadStarted = true;
+                    relodeTimerPlayer2.Enabled = Enabled;
+                }
+                reloadTimeDebug.Text = player2ReloadTime.ToString();
+
+                if (player2ReloadTime == 3)
+                {
+                    player2Bullet1ShotEnable = true;
+                    player2Bullet2ShotEnable = true;
+                    player2Bullet3ShotEnable = true;
+                    player2Reload = false;
+                    reloadTimeDebug.Text = "Reloaded";
+                    player2ReloadTime = 0;
+                    relodeTimerPlayer2.Enabled = false;
+                    player2IsReloadStarted = false;
+                }
+            }
+
+            //=================
+
+
+            //player1 bullet shot
+            if (playerBullet1Shot == true)
+            {
+                switch (playerBullet1Position)
                 {
                     case 0:
-                        playersBullet1.Top -= 5;
+                        playerBullet1.Top -= 5;
                         break;
                     case 1:
-                        playersBullet1.Left += 5;
+                        playerBullet1.Left += 5;
                         break;
                     case 2:
-                        playersBullet1.Top += 5;
+                        playerBullet1.Top += 5;
                         break;
                     case 3:
-                        playersBullet1.Left -= 5;
+                        playerBullet1.Left -= 5;
                         break;
                     default:
                         break;
                 }
             }
 
-            if (playersBullet2Shot == true)
+            if (playerBullet2Shot == true)
             {
-                switch (playersBullet2Position)
+                switch (playerBullet2Position)
                 {
                     case 0:
-                        playersBullet2.Top -= 5;
+                        playerBullet2.Top -= 5;
                         break;
                     case 1:
-                        playersBullet2.Left += 5;
+                        playerBullet2.Left += 5;
                         break;
                     case 2:
-                        playersBullet2.Top += 5;
+                        playerBullet2.Top += 5;
                         break;
                     case 3:
-                        playersBullet2.Left -= 5;
+                        playerBullet2.Left -= 5;
                         break;
                     default:
                         break;
                 }
             }
 
-            if (playersBullet3Shot == true)
+            if (playerBullet3Shot == true)
             {
-                switch (playersBullet3Position)
+                switch (playerBullet3Position)
                 {
                     case 0:
-                        playersBullet3.Top -= 5;
+                        playerBullet3.Top -= 5;
                         break;
                     case 1:
-                        playersBullet3.Left += 5;
+                        playerBullet3.Left += 5;
                         break;
                     case 2:
-                        playersBullet3.Top += 5;
+                        playerBullet3.Top += 5;
                         break;
                     case 3:
-                        playersBullet3.Left -= 5;
+                        playerBullet3.Left -= 5;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+
+//player2 bullet shot
+            if (player2Bullet1Shot == true)
+            {
+                switch (player2Bullet1Position)
+                {
+                    case 0:
+                        player2Bullet1.Top -= 5;
+                        break;
+                    case 1:
+                        player2Bullet1.Left += 5;
+                        break;
+                    case 2:
+                        player2Bullet1.Top += 5;
+                        break;
+                    case 3:
+                        player2Bullet1.Left -= 5;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (player2Bullet2Shot == true)
+            {
+                switch (player2Bullet2Position)
+                {
+                    case 0:
+                        player2Bullet2.Top -= 5;
+                        break;
+                    case 1:
+                        player2Bullet2.Left += 5;
+                        break;
+                    case 2:
+                        player2Bullet2.Top += 5;
+                        break;
+                    case 3:
+                        player2Bullet2.Left -= 5;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (player2Bullet3Shot == true)
+            {
+                switch (player2Bullet3Position)
+                {
+                    case 0:
+                        player2Bullet3.Top -= 5;
+                        break;
+                    case 1:
+                        player2Bullet3.Left += 5;
+                        break;
+                    case 2:
+                        player2Bullet3.Top += 5;
+                        break;
+                    case 3:
+                        player2Bullet3.Left -= 5;
                         break;
                     default:
                         break;
@@ -278,76 +540,147 @@ namespace WinFormsApp1
 
 
         }
+
+//=================
+
+
+
 
         private void relodeTimerPlayer1_Tick(object sender, EventArgs e)
         {         
-            playersReloadTime++;
-            if (playersReloadTime > 3) playersReloadTime = 0;
+            playerReloadTime++;
+            if (playerReloadTime > 3) playerReloadTime = 0;
         }
+
+        private void relodeTimerPlayer2_Tick(object sender, EventArgs e)
+        {
+            player2ReloadTime++;
+            if (player2ReloadTime > 3) player2ReloadTime = 0;
+        }
+
         private void seconds_Tick(object sender, EventArgs e)
         {
-            
-             
             fpsCounter_Debug.Text = framerateTicks.ToString();
             framerateTicks = 0;
-
         }
+
 
 
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
+            // controls p1
+
             if (e.KeyCode == Keys.W)
             {
-                goForward = true;
+                playerGoForward = true;
             }
             if (e.KeyCode == Keys.S)
             {
-                goBack = true;
+                playerGoBack = true;
             }
             if (e.KeyCode == Keys.Space)
             {
-                playersShoot = true;
+                playerShoot = true;
             }
+            //==============
+
+            // controls p2
+
+            if (e.KeyCode == Keys.Up)
+            {
+                player2GoForward = true;
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                player2GoBack = true;
+            }
+            if (e.KeyCode == Keys.NumPad0)
+            {
+                player2Shoot = true;
+            }
+
+            //==============
         }
 
 
         private void KayIsUp(object sender, KeyEventArgs e)
         {
+            // controls p1
+
             if (e.KeyCode == Keys.A)
             {
-                if (playersPosition > 0)
+                if (playerPosition > 0)
                 {
-                    playersPosition--;
+                    playerPosition--;
                 }
-                else playersPosition = 3;
+                else playerPosition = 3;
             }
             if (e.KeyCode == Keys.D)
             {
-                if (playersPosition < 3)
+                if (playerPosition < 3)
                 {
-                    playersPosition++;
+                    playerPosition++;
                 }
-                else playersPosition = 0;
+                else playerPosition = 0;
             }
             if (e.KeyCode == Keys.W)
             {
-                goForward = false;
+                playerGoForward = false;
             }
             if (e.KeyCode == Keys.S)
             {
-                goBack = false;
+                playerGoBack = false;
             }
 
             if (e.KeyCode == Keys.Space)
             {
-                playersShoot = false;
+                playerShoot = false;
             }
 
             if (e.KeyCode == Keys.R)
             {
-                playersReload = true;
+                playerReload = true;
+            }
+            //==============
+
+            // controls p2
+
+            if (e.KeyCode == Keys.Left)
+            {
+                if (player2Position > 0)
+                {
+                    player2Position--;
+                }
+                else player2Position = 3;
+            }
+            if (e.KeyCode == Keys.Right)
+            {
+                if (player2Position < 3)
+                {
+                    player2Position++;
+                }
+                else player2Position = 0;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                player2GoForward = false;
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                player2GoBack = false;
             }
 
+            if (e.KeyCode == Keys.NumPad0)
+            {
+                player2Shoot = false;
+            }
+
+            if (e.KeyCode == Keys.NumPad1)
+            {
+                player2Reload = true;
+            }
+
+            //==============
         }
     }
 }
