@@ -37,7 +37,7 @@ namespace WinFormsApp1
             this.player = new System.Windows.Forms.PictureBox();
             this.gameFramerate = new System.Windows.Forms.Timer(this.components);
             this.fpsCounter_Debug = new System.Windows.Forms.Label();
-            this.Seconds = new System.Windows.Forms.Timer(this.components);
+            this.seconds = new System.Windows.Forms.Timer(this.components);
             this.position_Debug = new System.Windows.Forms.Label();
             this.allert_Debug = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -53,6 +53,11 @@ namespace WinFormsApp1
             this.interfaceBullet3 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.whichBullet_Debug = new System.Windows.Forms.Label();
+            this.tektDebug1 = new System.Windows.Forms.Label();
+            this.reloadTimeDebug = new System.Windows.Forms.Label();
+            this.relodeTimerPlayer1 = new System.Windows.Forms.Timer(this.components);
+            this.interfacePlayer1 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.wallBottom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wallTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wallLeft)).BeginInit();
@@ -138,16 +143,16 @@ namespace WinFormsApp1
             this.fpsCounter_Debug.TabIndex = 2;
             this.fpsCounter_Debug.Text = "fps";
             // 
-            // Seconds
+            // seconds
             // 
-            this.Seconds.Enabled = true;
-            this.Seconds.Interval = 1000;
-            this.Seconds.Tick += new System.EventHandler(this.Seconds_Tick);
+            this.seconds.Enabled = true;
+            this.seconds.Interval = 1000;
+            this.seconds.Tick += new System.EventHandler(this.seconds_Tick);
             // 
             // position_Debug
             // 
             this.position_Debug.AutoSize = true;
-            this.position_Debug.Location = new System.Drawing.Point(1173, 81);
+            this.position_Debug.Location = new System.Drawing.Point(1235, 289);
             this.position_Debug.Name = "position_Debug";
             this.position_Debug.Size = new System.Drawing.Size(77, 25);
             this.position_Debug.TabIndex = 3;
@@ -225,7 +230,6 @@ namespace WinFormsApp1
             this.playersBullet1.TabStop = false;
             this.playersBullet1.Tag = "playersBullet";
             this.playersBullet1.Visible = false;
-            this.playersBullet1.Click += new System.EventHandler(this.playersBullet1_Click);
             // 
             // playersBullet2
             // 
@@ -252,7 +256,7 @@ namespace WinFormsApp1
             // interfaceBullet1
             // 
             this.interfaceBullet1.BackColor = System.Drawing.Color.DarkRed;
-            this.interfaceBullet1.Location = new System.Drawing.Point(1213, 201);
+            this.interfaceBullet1.Location = new System.Drawing.Point(1215, 372);
             this.interfaceBullet1.Name = "interfaceBullet1";
             this.interfaceBullet1.Size = new System.Drawing.Size(25, 25);
             this.interfaceBullet1.TabIndex = 5;
@@ -262,7 +266,7 @@ namespace WinFormsApp1
             // interfaceBullet2
             // 
             this.interfaceBullet2.BackColor = System.Drawing.Color.DarkRed;
-            this.interfaceBullet2.Location = new System.Drawing.Point(1213, 251);
+            this.interfaceBullet2.Location = new System.Drawing.Point(1215, 422);
             this.interfaceBullet2.Name = "interfaceBullet2";
             this.interfaceBullet2.Size = new System.Drawing.Size(25, 25);
             this.interfaceBullet2.TabIndex = 5;
@@ -272,7 +276,7 @@ namespace WinFormsApp1
             // interfaceBullet3
             // 
             this.interfaceBullet3.BackColor = System.Drawing.Color.DarkRed;
-            this.interfaceBullet3.Location = new System.Drawing.Point(1213, 301);
+            this.interfaceBullet3.Location = new System.Drawing.Point(1215, 472);
             this.interfaceBullet3.Name = "interfaceBullet3";
             this.interfaceBullet3.Size = new System.Drawing.Size(25, 25);
             this.interfaceBullet3.TabIndex = 5;
@@ -292,11 +296,52 @@ namespace WinFormsApp1
             // whichBullet_Debug
             // 
             this.whichBullet_Debug.AutoSize = true;
-            this.whichBullet_Debug.Location = new System.Drawing.Point(1173, 106);
+            this.whichBullet_Debug.Location = new System.Drawing.Point(1235, 106);
             this.whichBullet_Debug.Name = "whichBullet_Debug";
             this.whichBullet_Debug.Size = new System.Drawing.Size(56, 25);
             this.whichBullet_Debug.TabIndex = 3;
             this.whichBullet_Debug.Text = "bullet";
+            // 
+            // tektDebug1
+            // 
+            this.tektDebug1.AutoSize = true;
+            this.tektDebug1.Location = new System.Drawing.Point(1140, 317);
+            this.tektDebug1.Name = "tektDebug1";
+            this.tektDebug1.Size = new System.Drawing.Size(100, 25);
+            this.tektDebug1.TabIndex = 3;
+            this.tektDebug1.Text = "reloadTime";
+            // 
+            // reloadTimeDebug
+            // 
+            this.reloadTimeDebug.AutoSize = true;
+            this.reloadTimeDebug.Location = new System.Drawing.Point(1237, 317);
+            this.reloadTimeDebug.Name = "reloadTimeDebug";
+            this.reloadTimeDebug.Size = new System.Drawing.Size(56, 25);
+            this.reloadTimeDebug.TabIndex = 3;
+            this.reloadTimeDebug.Text = "bullet";
+            // 
+            // relodeTimerPlayer1
+            // 
+            this.relodeTimerPlayer1.Interval = 1000;
+            this.relodeTimerPlayer1.Tick += new System.EventHandler(this.relodeTimerPlayer1_Tick);
+            // 
+            // interfacePlayer1
+            // 
+            this.interfacePlayer1.AutoSize = true;
+            this.interfacePlayer1.Location = new System.Drawing.Point(1154, 254);
+            this.interfacePlayer1.Name = "interfacePlayer1";
+            this.interfacePlayer1.Size = new System.Drawing.Size(137, 25);
+            this.interfacePlayer1.TabIndex = 3;
+            this.interfacePlayer1.Text = "InterfacePlayer1";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1154, 289);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 25);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "position";
             // 
             // Form1
             // 
@@ -310,7 +355,11 @@ namespace WinFormsApp1
             this.Controls.Add(this.playersBullet3);
             this.Controls.Add(this.playersBullet2);
             this.Controls.Add(this.playersBullet1);
+            this.Controls.Add(this.reloadTimeDebug);
+            this.Controls.Add(this.tektDebug1);
+            this.Controls.Add(this.interfacePlayer1);
             this.Controls.Add(this.whichBullet_Debug);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.position_Debug);
             this.Controls.Add(this.allert_Debug);
             this.Controls.Add(this.fpsCounter_Debug);
@@ -360,7 +409,7 @@ namespace WinFormsApp1
         private System.Windows.Forms.PictureBox player;
         private System.Windows.Forms.Timer gameFramerate;
         private System.Windows.Forms.Label fpsCounter_Debug;
-        private System.Windows.Forms.Timer Seconds;
+        private System.Windows.Forms.Timer seconds;
         private System.Windows.Forms.Label position_Debug;
         private System.Windows.Forms.Label allert_Debug;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -376,6 +425,11 @@ namespace WinFormsApp1
         private System.Windows.Forms.PictureBox interfaceBullet3;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label whichBullet_Debug;
+        private System.Windows.Forms.Label tektDebug1;
+        private System.Windows.Forms.Label reloadTimeDebug;
+        private System.Windows.Forms.Timer relodeTimerPlayer1;
+        private System.Windows.Forms.Label interfacePlayer1;
+        private System.Windows.Forms.Label label1;
     }
 }
 
