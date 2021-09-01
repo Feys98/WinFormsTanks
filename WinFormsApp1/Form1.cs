@@ -24,7 +24,7 @@ namespace WinFormsApp1
         int playerPosition = 0;
         int playerSpeed = 3;
         int playerScore = 0;
-
+        bool playerIsDead = false;
 
 
         //==BULLETS
@@ -39,6 +39,8 @@ namespace WinFormsApp1
         int playerReloadTime = 0;
         bool playerIsReloadStarted = false;
 
+
+
         //===========
 
         //player 2 variables
@@ -47,6 +49,8 @@ namespace WinFormsApp1
         int player2Position = 0;
         int player2Speed = 3;
         int player2Score = 0;
+        bool player2IsDead = false;
+
 
         //==BULLETS
         bool player2Shoot = false;
@@ -219,7 +223,6 @@ namespace WinFormsApp1
                             playerBullet3.Location = new Point(0, 0);
                         }
 
-
 //player2 bullet colision with wall
 
                         if (player2.Bounds.IntersectsWith(_wall.Bounds))
@@ -251,9 +254,83 @@ namespace WinFormsApp1
                 }
             }
 
-//===========================================
 
-//SHOTING P1
+//colisions player1 with player2
+            if (playerBullet1.Bounds.IntersectsWith(player2.Bounds))
+            {
+                playerBullet1.Visible = false;
+                playerBullet1Shot = false;
+                playerBullet1.Location = new Point(0, 0);
+                player2.Location = new Point(4000,4000);
+                player2IsDead = true;
+            }
+            if (playerBullet2.Bounds.IntersectsWith(player2.Bounds))
+            {
+                playerBullet2.Visible = false;
+                playerBullet2Shot = false;
+                playerBullet2.Location = new Point(0, 0);
+                player2.Location = new Point(4000, 4000);
+                player2IsDead = true;
+            }
+            if (playerBullet3.Bounds.IntersectsWith(player2.Bounds))
+            {
+                playerBullet3.Visible = false;
+                playerBullet3Shot = false;
+                playerBullet3.Location = new Point(0, 0);
+                player2.Location = new Point(4000, 4000);
+                player2IsDead = true;
+            }
+
+
+
+            if (player.Bounds.IntersectsWith(player2.Bounds))
+            {
+                player.Top = lastPlayerPositionTop;
+                player.Left = lastPlayerPositionLeft;
+            }
+
+
+
+            //colisions player2 with player1
+
+
+            if (player2Bullet1.Bounds.IntersectsWith(player.Bounds))
+            {
+                player2Bullet1.Visible = false;
+                player2Bullet1Shot = false;
+                player2Bullet1.Location = new Point(0, 0);
+                player.Location = new Point(5000, 5000);
+                playerIsDead = true;
+
+            }
+            if (player2Bullet2.Bounds.IntersectsWith(player.Bounds))
+            {
+                player2Bullet2.Visible = false;
+                player2Bullet2Shot = false;
+                player2Bullet2.Location = new Point(0, 0);
+                player.Location = new Point(5000, 5000);
+                playerIsDead = true;
+            }
+            if (player2Bullet3.Bounds.IntersectsWith(player.Bounds))
+            {
+                player2Bullet3.Visible = false;
+                player2Bullet3Shot = false;
+                player2Bullet3.Location = new Point(0, 0);
+                player.Location = new Point(5000, 5000);
+                playerIsDead = true;
+            }
+
+
+
+            if (player2.Bounds.IntersectsWith(player.Bounds))
+            {
+                player2.Top = lastPlayer2PositionTop;
+                player2.Left = lastPlayer2PositionLeft;
+            }
+
+            //===========================================
+
+            //SHOTING P1
 
             if (playerShoot == true && (playerBullet1ShotEnable == true || playerBullet2ShotEnable == true || playerBullet3ShotEnable == true))
             {
@@ -475,6 +552,7 @@ namespace WinFormsApp1
 
 
 //player2 bullet shot
+
             if (player2Bullet1Shot == true)
             {
                 switch (player2Bullet1Position)
@@ -538,11 +616,63 @@ namespace WinFormsApp1
                 }
             }
 
+//RESPAWNING
+            if (playerIsDead==true)
+            {
+                Random rng = new Random();
 
+                switch (rng.Next(4)+1)
+                {
+                    case 1:
+                        player.Location = spawner1.Location;
+                        playerIsDead = false;
+                        break;
+                    case 2:
+                        player.Location = spawner2.Location;
+                        playerIsDead = false;
+                        break;
+                    case 3:
+                        player.Location = spawner3.Location;
+                        playerIsDead = false;
+                        break;
+                    case 4:
+                        player.Location = spawner4.Location;
+                        playerIsDead = false;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (player2IsDead == true)
+            {
+                Random rng = new Random();
+
+                switch (rng.Next(4) + 1)
+                {
+                    case 1:
+                        player2.Location = spawner1.Location;
+                        player2IsDead = false;
+                        break;
+                    case 2:
+                        player2.Location = spawner2.Location;
+                        player2IsDead = false;
+                        break;
+                    case 3:
+                        player2.Location = spawner3.Location;
+                        player2IsDead = false;
+                        break;
+                    case 4:
+                        player2.Location = spawner4.Location;
+                        player2IsDead = false;
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
-//=================
-
+//=================END OF MAIN TIMER_TICK
 
 
 
@@ -591,7 +721,7 @@ namespace WinFormsApp1
                 player2GoForward = true;
             }
             if (e.KeyCode == Keys.Down)
-            {
+            { 
                 player2GoBack = true;
             }
             if (e.KeyCode == Keys.NumPad0)

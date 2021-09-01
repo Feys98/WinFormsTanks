@@ -64,6 +64,10 @@ namespace WinFormsApp1
             this.player2Bullet3 = new System.Windows.Forms.PictureBox();
             this.player2Bullet2 = new System.Windows.Forms.PictureBox();
             this.relodeTimerPlayer2 = new System.Windows.Forms.Timer(this.components);
+            this.spawner1 = new System.Windows.Forms.PictureBox();
+            this.spawner4 = new System.Windows.Forms.PictureBox();
+            this.spawner3 = new System.Windows.Forms.PictureBox();
+            this.spawner2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.wallBottom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wallTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wallLeft)).BeginInit();
@@ -85,6 +89,10 @@ namespace WinFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.player2Bullet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player2Bullet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player2Bullet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spawner1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spawner4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spawner3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spawner2)).BeginInit();
             this.SuspendLayout();
             // 
             // wallBottom
@@ -131,7 +139,7 @@ namespace WinFormsApp1
             // 
             this.player.BackColor = System.Drawing.Color.Black;
             this.player.BackgroundImage = global::WinFormsApp1.Properties.Resources.TankModel_pos0;
-            this.player.Location = new System.Drawing.Point(138, 935);
+            this.player.Location = new System.Drawing.Point(247, 880);
             this.player.Name = "player";
             this.player.Size = new System.Drawing.Size(75, 75);
             this.player.TabIndex = 1;
@@ -232,7 +240,7 @@ namespace WinFormsApp1
             // 
             // playerBullet1
             // 
-            this.playerBullet1.BackColor = System.Drawing.Color.DarkRed;
+            this.playerBullet1.BackColor = System.Drawing.Color.DodgerBlue;
             this.playerBullet1.Location = new System.Drawing.Point(0, 19);
             this.playerBullet1.Name = "playerBullet1";
             this.playerBullet1.Size = new System.Drawing.Size(25, 25);
@@ -243,7 +251,7 @@ namespace WinFormsApp1
             // 
             // playerBullet2
             // 
-            this.playerBullet2.BackColor = System.Drawing.Color.DarkRed;
+            this.playerBullet2.BackColor = System.Drawing.Color.DodgerBlue;
             this.playerBullet2.Location = new System.Drawing.Point(0, 50);
             this.playerBullet2.Name = "playerBullet2";
             this.playerBullet2.Size = new System.Drawing.Size(25, 25);
@@ -254,7 +262,7 @@ namespace WinFormsApp1
             // 
             // playerBullet3
             // 
-            this.playerBullet3.BackColor = System.Drawing.Color.DarkRed;
+            this.playerBullet3.BackColor = System.Drawing.Color.DodgerBlue;
             this.playerBullet3.Location = new System.Drawing.Point(0, 81);
             this.playerBullet3.Name = "playerBullet3";
             this.playerBullet3.Size = new System.Drawing.Size(25, 25);
@@ -356,8 +364,8 @@ namespace WinFormsApp1
             // player2
             // 
             this.player2.BackColor = System.Drawing.Color.Black;
-            this.player2.BackgroundImage = global::WinFormsApp1.Properties.Resources.TankModel2_pos3;
-            this.player2.Location = new System.Drawing.Point(970, 106);
+            this.player2.BackgroundImage = global::WinFormsApp1.Properties.Resources.TankModel2_pos0;
+            this.player2.Location = new System.Drawing.Point(247, 525);
             this.player2.Name = "player2";
             this.player2.Size = new System.Drawing.Size(75, 75);
             this.player2.TabIndex = 1;
@@ -411,12 +419,56 @@ namespace WinFormsApp1
             this.relodeTimerPlayer2.Interval = 1000;
             this.relodeTimerPlayer2.Tick += new System.EventHandler(this.relodeTimerPlayer2_Tick);
             // 
+            // spawner1
+            // 
+            this.spawner1.Location = new System.Drawing.Point(111, 106);
+            this.spawner1.Name = "spawner1";
+            this.spawner1.Size = new System.Drawing.Size(66, 66);
+            this.spawner1.TabIndex = 6;
+            this.spawner1.TabStop = false;
+            this.spawner1.Tag = "spawner";
+            this.spawner1.Visible = false;
+            // 
+            // spawner4
+            // 
+            this.spawner4.Location = new System.Drawing.Point(111, 964);
+            this.spawner4.Name = "spawner4";
+            this.spawner4.Size = new System.Drawing.Size(66, 66);
+            this.spawner4.TabIndex = 6;
+            this.spawner4.TabStop = false;
+            this.spawner4.Tag = "spawner";
+            this.spawner4.Visible = false;
+            // 
+            // spawner3
+            // 
+            this.spawner3.Location = new System.Drawing.Point(989, 964);
+            this.spawner3.Name = "spawner3";
+            this.spawner3.Size = new System.Drawing.Size(66, 66);
+            this.spawner3.TabIndex = 6;
+            this.spawner3.TabStop = false;
+            this.spawner3.Tag = "spawner";
+            this.spawner3.Visible = false;
+            // 
+            // spawner2
+            // 
+            this.spawner2.Location = new System.Drawing.Point(989, 106);
+            this.spawner2.Name = "spawner2";
+            this.spawner2.Size = new System.Drawing.Size(66, 66);
+            this.spawner2.TabIndex = 6;
+            this.spawner2.TabStop = false;
+            this.spawner2.Tag = "spawner";
+            this.spawner2.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(1314, 1144);
+            this.Controls.Add(this.spawner2);
+            this.Controls.Add(this.spawner3);
+            this.Controls.Add(this.spawner4);
+            this.Controls.Add(this.spawner1);
             this.Controls.Add(this.interfaceBullet3);
             this.Controls.Add(this.interfaceBullet2);
             this.Controls.Add(this.interfaceBullet1);
@@ -448,7 +500,6 @@ namespace WinFormsApp1
             this.Controls.Add(this.wallTop);
             this.Controls.Add(this.wallBottom);
             this.Name = "Form1";
-            this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyIsDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KayIsUp);
             ((System.ComponentModel.ISupportInitialize)(this.wallBottom)).EndInit();
@@ -472,6 +523,10 @@ namespace WinFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.player2Bullet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.player2Bullet3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.player2Bullet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spawner1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spawner4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spawner3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spawner2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -513,6 +568,10 @@ namespace WinFormsApp1
         private System.Windows.Forms.PictureBox player2Bullet3;
         private System.Windows.Forms.PictureBox player2Bullet2;
         private System.Windows.Forms.Timer relodeTimerPlayer2;
+        private System.Windows.Forms.PictureBox spawner1;
+        private System.Windows.Forms.PictureBox spawner4;
+        private System.Windows.Forms.PictureBox spawner3;
+        private System.Windows.Forms.PictureBox spawner2;
     }
 }
 
